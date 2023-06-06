@@ -1,0 +1,106 @@
+<!-- Inherits from layout.html -->
+{% extends "layout.html" %}
+<!-- The block content replace the one encapsulated in layout.html -->
+{% block content %}
+
+
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4 align-items-end mb-4">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                
+                <img class="img-fluid rounded" src="{{ url_for('static',filename='img/health-insurance-features.png')}}">
+                
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <!-- <p class="d-inline-block border rounded text-primary fw-semi-bold py-1 px-3">About Us</p> -->
+                <h1 class="display-5 mb-4">Predict Your Insurance Premium</h1>
+                <!-- <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
+                    eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+                </p> -->
+                <div class="border rounded p-4">
+                    <nav>
+                        <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                            <button class="nav-link fw-semi-bold active" id="nav-story-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-story" type="button" role="tab" aria-controls="nav-story"
+                                aria-selected="true">Importance of Buying Insurance</button>
+                            <button class="nav-link fw-semi-bold" id="nav-mission-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-mission" type="button" role="tab" aria-controls="nav-mission"
+                                aria-selected="false">Predict</button>
+                           
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-story" role="tabpanel"
+                            aria-labelledby="nav-story-tab">
+                            <p>Nowadays, it is common to buy insurance for a peace of mind as they cover medical ,  hospitalisation  and surgery cost
+                                due to the expensive insurance prices.
+                                A knee replacement surgery  cost almost $20,000 (median) in a class B1 ward or even $34000 (median) in a private hospital.
+                                according to <a  href="https://blog.moneysmart.sg/health-insurance/health-insurance-singapore/"> Money Smart</a>  
+                                There is a sizeable insurance market locally with many companies  such as AIA, Aviva , Predential, Great Eastern and other smaller
+                                players also. </p>
+                          
+                        </div>
+                        <div class="tab-pane fade" id="nav-mission" role="tabpanel"
+                            aria-labelledby="nav-mission-tab">
+                            <p>
+                                Insurance premium prices in the market will vary due to different companies offering different plans.
+
+
+                                Before looking for an insurance, you should consider getting an approximate insurance premium price by 
+                                clicking on Predict in the menu , to avoid paying for premiums that are too high</p>
+                            
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+    </div>
+</div>
+
+    <!-- 
+
+<div>
+
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sepal Length</th>
+                <th>Sepal Width</th>
+                <th>Petal Length</th>
+                <th>Petal Width</th>
+                <th>Prediction</th>
+                <th>Timestamp</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.sepal_length}}</td>
+                <td>{{ entry.sepal_width }}</td>
+                <td>{{ entry.petal_length}}</td>
+                <td>{{ entry.petal_width }}</td>
+                <td>{{ entry.prediction | int }}</td>
+                <td>{{ entry.predicted_on.strftime("%d %b %y %H:%M")}}</td>
+
+
+                <td>
+                    <form name="frmRemoveEntry" action="/remove" method="post" novalidate>
+                        <input type="hidden" name="id" value="{{entry.id}}">
+                        <input type="submit" class="form-control btn-danger" value="Remove">
+                    </form>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div> -->
+    {% endblock %}

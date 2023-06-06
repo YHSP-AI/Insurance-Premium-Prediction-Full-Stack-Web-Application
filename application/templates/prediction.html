@@ -1,0 +1,234 @@
+<!-- Inherits from layout.html -->
+{% extends "layout.html" %}
+<!-- The block content replace the one encapsulated in layout.html -->
+{% block content %}
+
+
+
+
+<div class="container-fluid callback my-2 pt-5">
+    <div class="container pt-2">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-white border rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                        
+                        <h1 class="display-5 mb-5">Answer the questions to get estimated insurance premium </h1>
+                    </div>
+                    {% with messages = get_flashed_messages(with_categories=true)%}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{category}} d-flex justify-content-center align-items-center ">
+                        <p class='p-0 m-0'>{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+ 
+                    <h4 class = 'text-center' >Only ranges shown below is allowed  </h4>
+                    <p class = 'text-center'>Only the maximum and minimum ranges allowed in the dataset can be used to predict. <br> Model might show unexpected behavior outside these ranges</p>
+
+                   <div class = 'row mb-3'>
+
+                        <div class = 'col-4 offset-4'>
+                            <table class="table table-striped ">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Column</th>
+                                    <th scope="col">Min Value</th>
+                                    <th scope="col">Max Value</th>
+                                    
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">Age</th>
+                                    <td>18</td>
+                                    <td>66</td>
+                                  
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Weight</th>
+                                    <td>51</td>
+                                    <td>132</td>
+                                    
+                                  <tr>
+                                    <th scope="row">Height</th>
+                                    <td>145</td>
+                                    <td>188</td>
+                                  </tr>
+        
+                                  <tr>
+                                    <th scope="row">No of times surgery</th>
+                                    <td>0</td>
+                                    <td>3</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                   </div>
+                      
+                    <form action="/predict" method="post" novalidate>
+                        {{ form.csrf_token }}
+                        <div class="row g-3">
+
+
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.age.label }}</div>
+                                    <div>{{ form.age(class_='form-control') }}</div>
+                                    {% for error in form.age.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.weight.label }}</div>
+                                    <div>{{ form.weight(class_='form-control') }}</div>
+                                    {% for error in form.weight.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+
+                                </div>
+                            </div>
+               
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.height.label }}</div>
+                                    <div>{{ form.height(class_='form-control') }}</div>
+                                    {% for error in form.height.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.bp.label }}</div>
+                                    <div>{{ form.bp(class_='form-control') }}</div>
+                                    {% for error in form.bp.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.transplants.label }}</div>
+                                    <div>{{ form.transplants(class_='form-control') }}</div>
+                                    {% for error in form.transplants.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.diabetes.label }}</div>
+                                    <div>{{ form.diabetes(class_='form-control') }}</div>
+                                    {% for error in form.diabetes.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.chronic.label }}</div>
+                                    <div>{{ form.chronic(class_='form-control') }}</div>
+                                    {% for error in form.chronic.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.allergy.label }}</div>
+                                    <div> {{ form.allergy(class_='form-control') }}</div>
+                                    {% for error in form.allergy.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.cancer.label }}</div>
+                                    <div>{{ form.cancer(class_='form-control') }}</div>
+                                    {% for error in form.cancer.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <div>{{ form.noSurgery.label }}</div>
+                                    <div>{{ form.noSurgery(class_='form-control') }}</div>
+                                    {% for error in form.noSurgery.errors %}
+                                    <span class="error-message">{{ error }}</span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
+                            </div>
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 
+
+<div>
+
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sepal Length</th>
+                <th>Sepal Width</th>
+                <th>Petal Length</th>
+                <th>Petal Width</th>
+                <th>Prediction</th>
+                <th>Timestamp</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.sepal_length}}</td>
+                <td>{{ entry.sepal_width }}</td>
+                <td>{{ entry.petal_length}}</td>
+                <td>{{ entry.petal_width }}</td>
+                <td>{{ entry.prediction | int }}</td>
+                <td>{{ entry.predicted_on.strftime("%d %b %y %H:%M")}}</td>
+
+
+                <td>
+                    <form name="frmRemoveEntry" action="/remove" method="post" novalidate>
+                        <input type="hidden" name="id" value="{{entry.id}}">
+                        <input type="submit" class="form-control btn-danger" value="Remove">
+                    </form>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div> -->
+    {% endblock %}

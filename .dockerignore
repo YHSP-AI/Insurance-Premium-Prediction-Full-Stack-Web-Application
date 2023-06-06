@@ -1,0 +1,7 @@
+*.pdf
+*.pptx
+notebooks
+Wireframes
+__pycache__
+.pytest_cache
+database.db
